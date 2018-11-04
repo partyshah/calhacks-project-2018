@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import '../App.css';
+import '../Styles/Textbox.css';
 
-
-class Example extends Component {
+class Textbox extends Component {
 	_handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       console.log('do validate');
@@ -17,4 +16,4 @@ class Example extends Component {
   }
 }
 
-export default Example;
+export default Textbox;

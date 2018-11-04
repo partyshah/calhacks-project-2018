@@ -16,22 +16,31 @@ class CityArea extends React.Component {
         let buildings = this.props.skyline;
         console.log(buildings)
         let startX = 0;
-        let endX = 400;
-        for (let i = 0; i < 30; i++) {
-            let buildingWidthInt = this.getRandomInt(4, 10);
+        let endX = 99;
+        let continueLooping = true;
+        let i = 0;
+        while (continueLooping) {
+            i += 1;
+            let buildingWidthInt = this.getRandomInt(3, 9);
+            startX += buildingWidthInt;
+            if (startX > 100) {
+                buildingWidthInt = buildingWidthInt - (startX - 100)
+                continueLooping = false;
+            }
             let buildingWidth = buildingWidthInt.toString() + "vw";
             let buildingHeightInt = this.getRandomInt(10, 50);
             let buildingHeight = buildingHeightInt.toString() + "vh";
             let buildingColor = "#000080";
             let windowLength = [];
-            for(let pp = 0; pp < buildingWidthInt; pp+=1.3){
+            for(let pp = 0; pp < buildingWidthInt; pp+=4){
                 let temp = []
-                for(let i = 0; i < buildingHeightInt; i+=1.5) {
+                for(let i = 0; i < buildingHeightInt; i+=3) {
                     temp.push(1)
                 }
                 windowLength.push(temp)
             }
-            buildings.push(<TallBuilding key = {i} width={buildingWidth} height = {buildingHeight} color = {buildingColor} windowLength = {windowLength}/>)
+
+            buildings.push(<TallBuilding key = {i} numCols = {windowLength.length} widthInt = {buildingWidthInt} width={buildingWidth} height = {buildingHeight} color = {buildingColor} windowLength = {windowLength}/>)
         }
         return buildings;
     }
@@ -39,7 +48,7 @@ class CityArea extends React.Component {
     render() {
 		return (
 			// Creates the square
-			<div className="container" style={{ background: "#000000", width: "100%", height: "500px", display:"flex", alignItems:"flex-end"}}>
+			<div className="container" style={{ background: "#000B42", width: "100%", height: "500px", display:"flex", alignItems:"flex-end"}}>
             {this.createCity()}
             </div>
 		)

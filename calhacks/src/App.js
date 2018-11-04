@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import CityArea from './Components/CityArea';
 import './App.css';
-import Example from './Example';
-import Title from './Title';
-import Subtitle from './Subtitle';
+import Textbox from './Components/Textbox';
+import Title from './Components/Title';
+import Subtitle from './Components/Subtitle';
 
 
 class App extends Component {
@@ -22,7 +22,7 @@ class App extends Component {
       <div className="App">
         <Title/>
     	  <Subtitle/>
-        <Example/>
+        <Textbox/>
         <CityArea skyline={this.state.buildings}/>
       </div>
     

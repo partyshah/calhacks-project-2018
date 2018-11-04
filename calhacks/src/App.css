@@ -1,19 +1,6 @@
 .App {
   text-align: center;
-  background-color: blue;
-}
-
-h1 {
-  color: #F9DE2F;
-  text-align: center;
-  font-family: cursive;
-}
-
-h2 {
-  color: #F9DE2F;
-  text-align: center;
-  font-style: italic;
-  font-weight: lighter;
+  background-color: #000B42;
 }
 
 input {
