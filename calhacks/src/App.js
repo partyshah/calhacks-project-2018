@@ -26,7 +26,6 @@ class App extends Component {
   changeLight = res => this.setState({changeBuilding: true})
 
   render() {
-    // console.log("CHANGE BUILDING ", this.state.changeBuilding);
     return (
       <div className="App">
         <Title/>

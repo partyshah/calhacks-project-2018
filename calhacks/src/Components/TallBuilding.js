@@ -51,15 +51,12 @@ class TallBuilding extends React.Component {
     }
 
     createWindows(column) {
-        // console.log("THIS.STATE.WINDOWS ", this.state.windows)
         var margin = this.calculateMargin().toString() + "vw";
         var windowId = 0;
         let indivColumn = [];
         for (const window of column) {
-            // console.log("window id: ", windowId)
             let windowToAdd;
             if (windowId === this.state.windowToChange) {
-                // console.log("FOUND THE WINDOW WE NEED TO CHANGE");
                 windowToAdd = <Window margin={margin} id = {windowId} turnOnLight = {this.state.turnOnLight}/>
             } else {
                 windowToAdd = <Window margin={margin} id = {windowId} turnOnLight = {false}/>    
@@ -67,13 +64,11 @@ class TallBuilding extends React.Component {
             indivColumn.push(windowToAdd);
             windowId += 1;
         }
-        // console.log("WINDOW OBJECTS ", this.state.windowObjects);
         return indivColumn;
     }
 
 
     render() {
-        // let margin = this.calculateMargin().toString() + "vw";
 		return (
             <div name="building">
 			<ReactRectangle style={{ background: this.state.color, width: this.state.width, height: this.state.height }}>
