@@ -5,6 +5,8 @@ import './App.css';
 import Textbox from './Components/Textbox';
 import Title from './Components/Title';
 import Subtitle from './Components/Subtitle';
+import music from './Static/Dewdrop_Fantasy.mp3';
+import Sound from 'react-sound';
 
 
 class App extends Component {
@@ -30,6 +32,7 @@ class App extends Component {
       <div className="App">
         <Title/>
     	  <Subtitle/>
+        <Sound url = {music} playStatus={Sound.status.PLAYING}/>
         <Textbox onEnter = {this.onEnter}/>
         <CityArea skyline={this.state.buildings} changeBuilding={this.state.changeBuilding}/>
       </div>

@@ -1,3 +1,7 @@
 input {
     margin-bottom: 19.5vh;
+    width: 60vw;
+    height: 5vh;
+    font-size: 2vh;
+    font-family: 'Lato', sans-serif;
 }

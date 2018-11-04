@@ -12,7 +12,7 @@ class Textbox extends Component {
 
   render() {
     return (
-    	<input onKeyPress={this._handleKeyPress}  placeholder = "Type in your thoughts"/>
+    	<input onKeyPress={this._handleKeyPress}  placeholder = "type here and hit enter to light up the city"/>
     );
   }
 }

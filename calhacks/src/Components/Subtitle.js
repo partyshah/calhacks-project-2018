@@ -5,7 +5,7 @@ import '../Styles/Subtitle.css';
 class Subtitle extends Component {
   render() {
     return (
-    	<h2> type in your thoughts and watch the skyline glow</h2>
+    	<h2> write your thoughts and watch the skyline glow</h2>
     );
   }
 }
