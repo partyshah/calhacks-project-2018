@@ -5,8 +5,7 @@ import ReactDOM from 'react-dom';
 class CityArea extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-		};
+
     }
 
     getRandomInt(min, max) {
@@ -14,14 +13,25 @@ class CityArea extends React.Component {
     }
 
     createCity() {
-        let buildings = [];
+        let buildings = this.props.skyline;
+        console.log(buildings)
         let startX = 0;
         let endX = 400;
         for (let i = 0; i < 30; i++) {
-            let buildingWidth = this.getRandomInt(2, 6).toString() + "vw";
-            let buildingHeight = this.getRandomInt(1, 50).toString() + "vh";
+            let buildingWidthInt = this.getRandomInt(4, 10);
+            let buildingWidth = buildingWidthInt.toString() + "vw";
+            let buildingHeightInt = this.getRandomInt(10, 50);
+            let buildingHeight = buildingHeightInt.toString() + "vh";
             let buildingColor = "#000080";
-            buildings.push(<TallBuilding key = {i} width={buildingWidth} height = {buildingHeight} color = {buildingColor}/>)
+            let windowLength = [];
+            for(let pp = 0; pp < buildingWidthInt; pp+=1.3){
+                let temp = []
+                for(let i = 0; i < buildingHeightInt; i+=1.5) {
+                    temp.push(1)
+                }
+                windowLength.push(temp)
+            }
+            buildings.push(<TallBuilding key = {i} width={buildingWidth} height = {buildingHeight} color = {buildingColor} windowLength = {windowLength}/>)
         }
         return buildings;
     }
