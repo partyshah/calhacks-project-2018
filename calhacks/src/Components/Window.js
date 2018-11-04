@@ -26,7 +26,7 @@ class Window extends Component {
     render() {
     return (
         <div>
-    	<ReactRectangle style={{ background: "yellow", width: '1vw', height: '1vh', marginBottom: '1vh', marginRight: this.state.margin, marginLeft: this.state.margin, marginTop: "1vh", visibility: this.state.visible }}>
+    	<ReactRectangle style={{ background: "yellow", width: '1vw', height: '1vh', marginBottom: '1vh', marginRight: this.state.margin, marginLeft: this.state.margin, marginTop: "1vh", visibility: this.state.visible}}>
                             </ReactRectangle>
         </div>
 
