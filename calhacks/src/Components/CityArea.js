@@ -5,16 +5,16 @@ import ReactDOM from 'react-dom';
 class CityArea extends React.Component {
     constructor(props) {
         super(props)
-
+        this.state = {
+            buildings : this.props.skyline
+        };
     }
 
     getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-    createCity() {
-        let buildings = this.props.skyline;
-        console.log(buildings)
+    createBuildings() {
         let startX = 0;
         let endX = 99;
         let continueLooping = true;
@@ -28,28 +28,29 @@ class CityArea extends React.Component {
                 continueLooping = false;
             }
             let buildingWidth = buildingWidthInt.toString() + "vw";
-            let buildingHeightInt = this.getRandomInt(10, 50);
+            let buildingHeightInt = this.getRandomInt(10, 55);
             let buildingHeight = buildingHeightInt.toString() + "vh";
             let buildingColor = "#000080";
             let windowLength = [];
             for(let pp = 0; pp < buildingWidthInt; pp+=4){
                 let temp = []
-                for(let i = 0; i < buildingHeightInt; i+=3) {
+                for(let i = 0; i < buildingHeightInt; i+=2.5) {
                     temp.push(1)
                 }
                 windowLength.push(temp)
             }
 
-            buildings.push(<TallBuilding key = {i} numCols = {windowLength.length} widthInt = {buildingWidthInt} width={buildingWidth} height = {buildingHeight} color = {buildingColor} windowLength = {windowLength}/>)
+            this.state.buildings.push(<TallBuilding key = {i} numCols = {windowLength.length} widthInt = {buildingWidthInt} width={buildingWidth} height = {buildingHeight} color = {buildingColor} windowLength = {windowLength}/>)
         }
-        return buildings;
+        console.log("BUILDINGS HAHA XD", this.state.buildings)
+        return this.state.buildings;
     }
 
     render() {
 		return (
 			// Creates the square
 			<div className="container" style={{ background: "#000B42", width: "100%", height: "500px", display:"flex", alignItems:"flex-end"}}>
-            {this.createCity()}
+            {this.createBuildings()}
             </div>
 		)
 	}

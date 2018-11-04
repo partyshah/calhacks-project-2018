@@ -14,6 +14,11 @@ class App extends Component {
     this.state = {
       buildings: []
     };
+    this.onEnter = this.onEnter.bind(this)
+  }
+
+  onEnter() {
+    console.log("got clicked");
   }
 
   render() {
@@ -22,7 +27,7 @@ class App extends Component {
       <div className="App">
         <Title/>
     	  <Subtitle/>
-        <Textbox/>
+        <Textbox onEnter = {this.onEnter}/>
         <CityArea skyline={this.state.buildings}/>
       </div>
     
