@@ -15,9 +15,10 @@ class Window extends Component {
     }
 
     componentWillReceiveProps(props) {
+        // console.log("window received props. lighting this window is ", props.turnOnLight);
         var thisComponent = this;
         if (props.turnOnLight) {
-            console.log("it's true that turn on light from props is true")
+            // console.log("it's true that turn on light from props is true")
             thisComponent.lightWindow("visible");
         }
     }
@@ -25,7 +26,7 @@ class Window extends Component {
     lightWindow = res => this.setState({visible: res})
   
     render() {
-      console.log("THE VISIBILITY IS: ", this.state.visible);
+    //   console.log("THE VISIBILITY IS: ", this.state.visible);
     return (
         <div>
     	<ReactRectangle style={{ background: "yellow", width: '1vw', height: '1vh', marginBottom: '1vh', marginRight: this.state.margin, marginLeft: this.state.margin, marginTop: "1vh", visibility: this.state.visible }}>

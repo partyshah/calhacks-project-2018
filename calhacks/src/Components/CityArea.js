@@ -18,7 +18,7 @@ class CityArea extends React.Component {
     }
 
     componentWillReceiveProps(props) {
-        // console.log("CITY AREA COMPONENTWILLRECEIVE PROPS, CHANGE BUILDING IS: ", props.changeBuilding);
+        // console.log("city area received props. changing a building to light is ", props.changeBuilding);
         var thisComponent = this;
         if ((props.changeBuilding)) {
             // console.log("CITY IS FINDING BUILDING TO CHANGE");
@@ -42,7 +42,7 @@ class CityArea extends React.Component {
         let startX = 0;
         let continueLooping = true;
         let index = 0;
-        console.log("INDEX WE WANT ", this.state.buildingToChange);
+        // console.log("INDEX WE WANT ", this.state.buildingToChange);
         while (continueLooping) {
             let buildingWidthInt = 5;
             startX += buildingWidthInt;
@@ -63,12 +63,17 @@ class CityArea extends React.Component {
                 }
                 windowLength.push(temp)
             }
+            if (windowLength.length != 0) {
+            console.log("WHAT WINDOWLENGTH IS " , windowLength);
+            let singleCol = windowLength[0];
+            console.log("SINGLECOL ", singleCol);
             if (index === this.state.buildingToChange) {
                 // console.log("FOUND BUILDING TO CHANGE :D")
                 // console.log(this.state.changeWindow)
-                buildings.push(<TallBuilding key = {index} numCols = {windowLength.length} widthInt = {buildingWidthInt} width={buildingWidth} height = {buildingHeight} color = {buildingColor} windowLength = {windowLength} changeWindow = {this.state.changeWindow}/>)
+                buildings.push(<TallBuilding key = {index} numCols = {windowLength.length} widthInt = {buildingWidthInt} width={buildingWidth} height = {buildingHeight} color = {buildingColor} windowLength = {windowLength} changeWindow = {this.state.changeWindow} sglCol = {singleCol}/>)
             } else {
-                buildings.push(<TallBuilding key = {index} numCols = {windowLength.length} widthInt = {buildingWidthInt} width={buildingWidth} height = {buildingHeight} color = {buildingColor} windowLength = {windowLength} changeWindow = {false}/>)
+                buildings.push(<TallBuilding key = {index} numCols = {windowLength.length} widthInt = {buildingWidthInt} width={buildingWidth} height = {buildingHeight} color = {buildingColor} windowLength = {windowLength} changeWindow = {false} sglCol = {singleCol}/>)
+            }
             }
             index += 1;
         }

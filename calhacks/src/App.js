@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   onEnter() {
-    // console.log("got clicked");
+    console.log("got clicked");
     this.changeLight();
   }
 

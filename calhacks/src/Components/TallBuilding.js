@@ -15,17 +15,19 @@ class TallBuilding extends React.Component {
             windows: this.props.windowLength,
             windowMargin: 0,
             numCols: this.props.numCols,
-            windowObjects: [],
             windowToChange: -1,
             turnOnLight: false,
+            sglCol: this.props.sglCol
         };
         this.createWindows = this.createWindows.bind(this)
     }
 
     componentWillReceiveProps(props) {
+        console.log("tall building received props. changing a window to light up is ", props.changeWindow);
         var thisComponent = this;
         if (props.changeWindow) {
-            let windowToChange = this.getRandomInt(0, this.state.windowObjects.length - 1);
+            let windowToChange = this.getRandomInt(0, this.state.sglCol.length - 1);
+            console.log("window to change ", windowToChange);
             thisComponent.makeWindowChange(windowToChange);
             thisComponent.makeLightChange(true);
         }
@@ -54,7 +56,7 @@ class TallBuilding extends React.Component {
         var windowId = 0;
         let indivColumn = [];
         for (const window of column) {
-            windowId += 1;
+            // console.log("window id: ", windowId)
             let windowToAdd;
             if (windowId === this.state.windowToChange) {
                 // console.log("FOUND THE WINDOW WE NEED TO CHANGE");
@@ -62,8 +64,8 @@ class TallBuilding extends React.Component {
             } else {
                 windowToAdd = <Window margin={margin} id = {windowId} turnOnLight = {false}/>    
             }
-            this.state.windowObjects.push(windowToAdd);
             indivColumn.push(windowToAdd);
+            windowId += 1;
         }
         // console.log("WINDOW OBJECTS ", this.state.windowObjects);
         return indivColumn;
