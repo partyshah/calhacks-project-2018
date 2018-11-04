@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import ReactRectangle from 'react-rectangle';
 import Window from './Window.js';
 
-class CityArea extends React.Component {
+class TallBuilding extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -15,24 +15,29 @@ class CityArea extends React.Component {
             windows: this.props.windowLength,
             windowMargin: 0,
             numCols: this.props.numCols,
-            windowObjects: []
+            windowObjects: [],
+            windowToChange: -1,
+            turnOnLight: false,
         };
         this.createWindows = this.createWindows.bind(this)
     }
 
-    // createWindows(){
-    //     console.log("PROPS WINDOW LENGTH");
-    //     console.log(this.state.windows);
-    //     for(let i = 0; i < 100; i += 6){
-    //         this.setState({
-    //             windows: this.state.windows.concat(
-    //                 <ReactRectangle style={{ background: this.state.windowColor, width: '4px', height: '4px' }}>
-    //                 </ReactRectangle>
+    componentWillReceiveProps(props) {
+        var thisComponent = this;
+        if (props.changeWindow) {
+            let windowToChange = this.getRandomInt(0, this.state.windowObjects.length - 1);
+            thisComponent.makeWindowChange(windowToChange);
+            thisComponent.makeLightChange(true);
+        }
+    }
 
-    //             )
-    //         })
-    //     }
-    // }
+    makeWindowChange = res => this.setState({ windowToChange: res })
+
+    makeLightChange = res => this.setState({turnOnLight: res})
+
+    getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
 
     calculateMargin() {
         let numCols = this.state.numCols;
@@ -44,17 +49,23 @@ class CityArea extends React.Component {
     }
 
     createWindows(column) {
-        console.log("THIS.STATE.WINDOWS ", this.state.windows)
+        // console.log("THIS.STATE.WINDOWS ", this.state.windows)
         var margin = this.calculateMargin().toString() + "vw";
         var windowId = 0;
         let indivColumn = [];
         for (const window of column) {
             windowId += 1;
-            let windowToAdd = <Window margin={margin} id = {windowId} visible="hidden"/>
+            let windowToAdd;
+            if (windowId === this.state.windowToChange) {
+                // console.log("FOUND THE WINDOW WE NEED TO CHANGE");
+                windowToAdd = <Window margin={margin} id = {windowId} turnOnLight = {this.state.turnOnLight}/>
+            } else {
+                windowToAdd = <Window margin={margin} id = {windowId} turnOnLight = {false}/>    
+            }
             this.state.windowObjects.push(windowToAdd);
             indivColumn.push(windowToAdd);
         }
-        console.log("WINDOW OBJECTS ", this.state.windowObjects);
+        // console.log("WINDOW OBJECTS ", this.state.windowObjects);
         return indivColumn;
     }
 
@@ -81,4 +92,4 @@ class CityArea extends React.Component {
     }
 }
 
-export default CityArea;
+export default TallBuilding;
